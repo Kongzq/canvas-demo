@@ -1,10 +1,10 @@
-var yyy = document.getElementById('xxx');
+var canvas = document.getElementById('canvas');
 var context = yyy.getContext('2d');
 var lineWidth = 5
 
-autoSetCanvasSize(yyy)
+autoSetCanvasSize(canvas)
 
-listenToUser(yyy)
+listenToUser(canvas)
 
 
 var eraserEnabled = false
@@ -19,14 +19,14 @@ eraser.onclick = function(){
   pen.classList.remove('active')
 }
 clear.onclick = function(){
-  context.clearRect(0, 0, yyy.width, yyy.height);
+  context.clearRect(0, 0, canvas.width, canvas.height);
 }
 download.onclick = function(){
   var url = yyy.toDataURL("image/png")
   var a = document.createElement('a')
   document.body.appendChild(a)
   a.href = url
-  a.download = '我的画儿'
+  a.download = '我的画'
   a.target = '_blank'
   a.click()
 }
@@ -87,9 +87,9 @@ function drawCircle(x, y, radius) {
 
 function drawLine(x1, y1, x2, y2) {
   context.beginPath();
-  context.moveTo(x1, y1) // 起点
+  context.moveTo(x1, y1) 
   context.lineWidth = lineWidth
-  context.lineTo(x2, y2) // 终点
+  context.lineTo(x2, y2) 
   context.stroke()
   context.closePath()
 }
@@ -105,10 +105,10 @@ function listenToUser(canvas) {
   // 特性检测
   if(document.body.ontouchstart !== undefined){
     // 在pc上document.body.ontouchstart是undefined，表明不支持该事件，而在触屏设备上是null，支持该事件
-    canvas.ontouchstart = function(aaa){
-      var x = aaa.touches[0].clientX  
+    canvas.ontouchstart = function(e){
+      var x = e.touches[0].clientX  
    // 把event打印出来就可以看到，因为手机支持多点触控，所以关于touch的信息都放在一个数组里，touches[0]表示一点触控，tounch[1]表示另外一点触控
-      var y = aaa.touches[0].clientY
+      var y = e.touches[0].clientY
       console.log(x,y)
       using = true
       if (eraserEnabled) {
@@ -120,10 +120,10 @@ function listenToUser(canvas) {
         }
       }
     }
-    canvas.ontouchmove = function(aaa){
+    canvas.ontouchmove = function(e){
       console.log('边摸边动')
-      var x = aaa.touches[0].clientX
-      var y = aaa.touches[0].clientY
+      var x = e.touches[0].clientX
+      var y = e.touches[0].clientY
 
       if (!using) {return}
 
@@ -144,9 +144,9 @@ function listenToUser(canvas) {
     }
   }else{
     // 非触屏设备
-    canvas.onmousedown = function(aaa) {
-      var x = aaa.clientX
-      var y = aaa.clientY
+    canvas.onmousedown = function(e) {
+      var x = e.clientX
+      var y = e.clientY
       using = true
       if (eraserEnabled) {
         context.clearRect(x - 5, y - 5, 10, 10)
@@ -157,9 +157,9 @@ function listenToUser(canvas) {
         }
       }
     }
-    canvas.onmousemove = function(aaa) {
-      var x = aaa.clientX
-      var y = aaa.clientY
+    canvas.onmousemove = function(e) {
+      var x = e.clientX
+      var y = e.clientY
 
       if (!using) {return}
 
@@ -175,7 +175,7 @@ function listenToUser(canvas) {
       }
 
     }
-    canvas.onmouseup = function(aaa) {
+    canvas.onmouseup = function(e) {
       using = false
     }
   }
