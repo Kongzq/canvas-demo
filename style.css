@@ -6,7 +6,7 @@ ul,ol{list-style: none;}
   fill: currentColor;
   overflow: hidden;
 }
-#xxx{
+#canvas{
   display: block;
   background: white;
   position: fixed;
@@ -14,9 +14,7 @@ ul,ol{list-style: none;}
   left: 0;
 }
 
-body{
-overflow: hidden;   /* 没有这个的话在手机上画线时屏幕会动 */
-}
+
 
 .actions{
   position: fixed;
