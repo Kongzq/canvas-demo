@@ -21,6 +21,9 @@ eraser.onclick = function(){
 clear.onclick = function(){
   context.clearRect(0, 0, canvas.width, canvas.height);
 }
+
+// 这种保存为图片的方法有兼容性问题，在ios chrome上点击按钮不会下载图片，
+//而是直接打开url变量的地址，在小米6的miui9 chrome则正常
 download.onclick = function(){
   var url = canvas.toDataURL("image/png")
   var a = document.createElement('a')
@@ -68,6 +71,7 @@ function autoSetCanvasSize(canvas) {
 
   window.onresize = function() {
     setCanvasSize()
+    //todo:，resize后用户之前画好的东西会消失
   }
 
   function setCanvasSize() {
@@ -165,6 +169,10 @@ function listenToUser(canvas) {
 
       if (eraserEnabled) {
         context.clearRect(x - 5, y - 5, 10, 10)
+        
+        // 这里-5的意义是调整rect的正中心到鼠标的左上角，这样橡皮擦更能随鼠标移动准确擦除线条，
+        // using这个变量的作用就是用户点击橡皮擦或画笔那个按钮后，一般的交互都是用户单击鼠标后，再移动鼠标擦除或画线，
+        // 所以在onmousedown时 using = true，如果没有这个using判定，用户移动鼠标自动擦除或画线了
       } else {
         var newPoint = {
           "x": x,
