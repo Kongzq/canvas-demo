@@ -4,4 +4,4 @@
 
 已知问题：在手机上的一些浏览器上，当向下滑动画画时，触发了浏览器的刷新功能导致画的东西会消失
 
-![预览](https://github.com/Kongzq/canvas-demo/blob/master/QR%20Code.png)
+![二维码](https://github.com/Kongzq/canvas-demo/blob/master/QR%20Code.png)
