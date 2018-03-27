@@ -1,5 +1,12 @@
+
+/*  清除body的margin：让body等价于canvas,因为clientx/clienty是相对于viewport，例如你在相对于canvas 20X20的地方单击，但此时clientx/clienty等于
+ 28X28（body默认有8px的margin），根据右边的js，画出来的圆会在相对于canvas 28x28的位置 */
+
 ul,ol{list-style: none;}
 *{margin:0;padding:0;}
+
+
+
 .icon {
   width: 1em; height: 1em;
   vertical-align: -0.15em;
@@ -9,6 +16,8 @@ ul,ol{list-style: none;}
 #canvas{
   display: block;
   background: white;
+  
+  /* 经过测试， 若没有以下三句css，在ios上画画时屏幕跟着手指会动，在小米6的miui9则不会 */
   position: fixed;
   top: 0;
   left: 0;
