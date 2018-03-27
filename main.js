@@ -59,9 +59,14 @@ blue.onclick = function(){
 
 thin.onclick = function(){
   lineWidth = 5
+ 
+  thick.classList.remove('active')
+  thin.classList.add('active')
 }
 thick.onclick = function(){
   lineWidth = 10
+  thin.classList.remove('active')
+  thick.classList.add('active')
 }
 
 /******/
