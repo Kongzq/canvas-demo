@@ -72,6 +72,8 @@ ul,ol{list-style: none;}
   right: 20px;
   top: 10px;
 }
+
+
 .sizes > li {
   margin: 20px 0;
 }
@@ -84,4 +86,15 @@ ul,ol{list-style: none;}
   height: 0;
   width: 20px;
   border-top: 6px solid black;
+}
+
+
+.sizes> .thin.active{
+  
+  transform: scale(1.2);
+}
+
+.sizes> .thick.active{
+ 
+  transform: scale(1.2);
 }
