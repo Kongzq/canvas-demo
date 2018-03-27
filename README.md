@@ -2,4 +2,6 @@
 
 功能有画笔、橡皮擦、选择画笔颜色或粗细、清空、保存为图片
 
+已知问题：在手机上的一些浏览器上，当向下滑动画画时，会触发浏览器的刷新功能
+
 ![预览](https://github.com/Kongzq/canvas-demo/blob/master/QR%20Code.png)
